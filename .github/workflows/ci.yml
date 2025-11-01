@@ -38,4 +38,5 @@ jobs:
       
       # 6️⃣ Exécuter ton programme
     - name: Run program
-      run: dotnet run --project FullText.csproj
+      run: dotnet run --project FullText.csproj --framework net8.0
+
