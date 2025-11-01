@@ -1,7 +1,7 @@
 .vs/
 bin/
 obj/
-ArticleIndexProvider.txt
-CreateReduceIndexTableAsync.txt
-Interface IEnumerable.txt
-Notes.txt
+Indexes/ArticleIndexProvider.txt
+Indexes/CreateReduceIndexTableAsync.txt
+Indexes/Interface IEnumerable.txt
+Indexes/Notes.txt
