@@ -1,0 +1,52 @@
+﻿1️/ Définition générale
+public interface IEnumerable<out T> : IEnumerable
+{
+    IEnumerator<T> GetEnumerator();
+}
+IEnumerable<T> représente une collection d’objets de type T que l’on peut parcourir (itérer).
+
+Elle hérite de IEnumerable non générique, pour assurer la compatibilité avec d’anciennes APIs.
+
+2️⃣ Méthode principale :
+
+IEnumerator<T> GetEnumerator();
+
+But : Fournir un énumérateur (IEnumerator<T>) pour parcourir les éléments un par un.
+
+Grâce à cela, tu peux utiliser des constructions comme :
+
+foreach (var item in collection)
+{
+    Console.WriteLine(item);
+}
+
+Ici, foreach utilise implicitement GetEnumerator() derrière le rideau.
+
+3️/ Pourquoi c’est important pour ton StopWordFilter
+
+Ton StopWordFilter utilise :
+
+IEnumerable<string> Filter(IEnumerable<string> tokens)
+
+IEnumerable<string> Filter(IEnumerable<string> tokens)
+
+tokens est une collection de chaînes (string) que tu peux parcourir.
+
+IEnumerable<string> permet de faire des opérations LINQ, par exemple :
+
+tokens.Where(token => token.Length >= 2)
+
+Chaque méthode LINQ comme Where, Select, OrderBy retourne aussi un IEnumerable<T>, ce qui rend le code très fluide et chaînable.
+
+Points clés à retenir :
+
+| Concept            | Explication                                                                                                                         |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `IEnumerable<T>`   | Interface pour **parcourir** une collection d’éléments génériques.                                                                  |
+| `GetEnumerator()`  | Méthode qui retourne un **énumérateur** (`IEnumerator<T>`) utilisé par `foreach` ou LINQ.                                           |
+| LINQ + IEnumerable | Les méthodes LINQ retournent des `IEnumerable<T>` et **ne créent pas de copie** tant
+                        qu’on ne les matérialise pas (ex. `ToList()`). |
+| Lazy evaluation    | Le filtrage (`Where`, `Select`) n’est exécuté **que lors de l’itération**, 
+                        ce qui économise mémoire et temps.                       |
+
+éléments génériques, on parle simplement de types paramétrables, au lieu de types fixes comme int ou string.

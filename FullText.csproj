@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net8.0</TargetFrameworks>
+        <DebugType>portable</DebugType>
+        <PreserveCompilationContext>true</PreserveCompilationContext>
+        <AssemblyName>YesSql.Samples.FullText</AssemblyName>
+        <OutputType>Exe</OutputType>
+        <PackageId>YesSql.Samples.FullText</PackageId>
+        <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+        <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+        <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+        <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+        <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+        <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+        <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+        <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+        <IsPackable>false</IsPackable>
+        <LangVersion>8</LangVersion>
+        <StartupObject>YesSql.Samples.FullText.Program1</StartupObject>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.10" />
+      <PackageReference Include="YesSql.Core" Version="5.4.7" />
+      <PackageReference Include="YesSql.Provider.Sqlite" Version="5.4.7" />
+    </ItemGroup>
+</Project>

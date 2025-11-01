@@ -1,0 +1,37 @@
+﻿1️/ Contexte
+
+Dans YesSql, on peut créer des tables pour stocker des index réduits.
+
+Un Reduce Index est une table qui contient des informations pré-calculées sur les documents (articles, posts…)
+pour accélérer les recherches.
+
+Dans ton exemple, ArticleByWord est une classe qui représente un index de type mot → nombre d’occurrences.
+
+await builder.CreateReduceIndexTableAsync<ArticleByWord>(table => table
+    .Column<int>("Count")
+    .Column<string>("Word")
+);
+Décomposition
+
+builder.CreateReduceIndexTableAsync<ArticleByWord>
+
+builder : c’est le ISession ou le IStoreBuilder de YesSql qui construit la base.
+
+ArticleByWord : le type de Reduce Index que tu veux créer.
+
+Cette méthode va créer la table SQL correspondante si elle n’existe pas encore.
+
+table => table.Column<int>("Count")
+
+On définit une colonne SQL de type int appelée "Count" dans la table.
+
+Ici, "Count" va stocker le nombre de fois qu’un mot apparaît dans tous les articles.
+
+.Column<string>("Word")
+
+On définit une colonne SQL de type string appelée "Word".
+
+Ici, "Word" contient le mot lui-même.
+
+C’est exactement ce qu’on appelle un Reduce Index, car il réduit les données originales (articles complets)
+à quelque chose de plus simple à requêter.

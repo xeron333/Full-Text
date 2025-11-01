@@ -1,0 +1,7 @@
+.vs/
+bin/
+obj/
+ArticleIndexProvider.txt
+CreateReduceIndexTableAsync.txt
+Interface IEnumerable.txt
+Notes.txt
