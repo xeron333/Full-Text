@@ -35,3 +35,7 @@ jobs:
     # 5️⃣ Lancer les tests (si tu en as)
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      
+      # 6️⃣ Exécuter ton programme
+    - name: Run program
+      run: dotnet run --project FullText.csproj
