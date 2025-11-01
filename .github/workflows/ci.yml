@@ -1,0 +1,37 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:   # <-- permet de lancer le workflow manuellement
+
+
+# Jobs à exécuter
+jobs:
+  build:
+    runs-on: windows-latest  # machine Windows
+
+    steps:
+    # 1️⃣ Récupérer le code
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2️⃣ Installer .NET (version 8.0 ici, tu peux changer)
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    # 3️⃣ Restaurer les dépendances
+    - name: Restore dependencies
+      run: dotnet restore
+
+    # 4️⃣ Compiler le projet
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    # 5️⃣ Lancer les tests (si tu en as)
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
